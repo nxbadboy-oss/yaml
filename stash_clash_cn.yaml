@@ -1,0 +1,92 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+dns:
+  enabled: true
+  enhanced-mode: fake-ip
+proxies:
+  -
+    name: 美国1号qq548334463到期2025-11-30 20:00:00-kj5x5min
+    type: vmess
+    server: xy.qq548334463.cyou
+    port: 21229
+    uuid: 9f27f666-1c6e-4d60-b2bd-8ff36b030f54
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: tcp
+    client-fingerprint: chrome
+  -
+    name: 美国3号qq548334463到期2025-11-30 20:00:00-9ezvn739
+    type: vmess
+    server: mga.qq548334463.cyou
+    port: 26800
+    uuid: b4b1f627-dff5-4b5a-8979-53001b04b0b1
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: tcp
+    client-fingerprint: chrome
+  -
+    name: 德国2号qq548334463到期2025-11-30 20:00:00-lp2bczb8
+    type: vmess
+    server: po.qq548334463.cyou
+    port: 18789
+    uuid: d0cff781-2353-4c4f-8570-702881626029
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: tcp
+    client-fingerprint: chrome
+  -
+    name: 新加坡qq548334463到期2025-11-30 20:00:00-j39l2d4d
+    type: vmess
+    server: xxp.548334463.icu
+    port: 37350
+    uuid: 51ceb24a-c569-4255-8bc6-377ba45666eb
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: tcp
+    client-fingerprint: chrome
+  -
+    name: 香港2qq548334463到期2025-11-30 20:00:00-pkar832l
+    type: vmess
+    server: uyi.548334463.icu
+    port: 43179
+    uuid: 15699e88-02ff-492b-91db-76a44d466b87
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: tcp
+    alpn: h2,http/1.1
+    client-fingerprint: chrome
+proxy-groups:
+  -
+    name: PROXY
+    type: select
+    proxies:
+      - AUTO
+      - 美国1号qq548334463到期2025-11-30 20:00:00-kj5x5min
+      - 美国3号qq548334463到期2025-11-30 20:00:00-9ezvn739
+      - 德国2号qq548334463到期2025-11-30 20:00:00-lp2bczb8
+      - 新加坡qq548334463到期2025-11-30 20:00:00-j39l2d4d
+      - 香港2qq548334463到期2025-11-30 20:00:00-pkar832l
+      - DIRECT
+  -
+    name: AUTO
+    type: url-test
+    proxies:
+      - 美国1号qq548334463到期2025-11-30 20:00:00-kj5x5min
+      - 美国3号qq548334463到期2025-11-30 20:00:00-9ezvn739
+      - 德国2号qq548334463到期2025-11-30 20:00:00-lp2bczb8
+      - 新加坡qq548334463到期2025-11-30 20:00:00-j39l2d4d
+      - 香港2qq548334463到期2025-11-30 20:00:00-pkar832l
+    url: http://cp.cloudflare.com/generate_204
+    interval: 600
+rules:
+  - GEOIP,CN,DIRECT
+  - GEOSITE,CN,DIRECT
+  - MATCH,PROXY
